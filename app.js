@@ -15,7 +15,7 @@ const app = Vue.createApp({
 			this.counter = this.counter - num;
 		},
 		setName(e, lastName) {
-			this.name = e.target.value + ' ' + lastName;
+			this.name = e.target.value;
 		},
 		confirmInput() {
 			this.confirmedName = this.name;
@@ -23,6 +23,9 @@ const app = Vue.createApp({
 		submitForm(e) {
 			e.preventDefault();
 			alert('Submitted!');
+		},
+		resetInput() {
+			this.confirmedName = '';
 		},
 	},
 });

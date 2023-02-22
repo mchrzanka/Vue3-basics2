@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vue Basics</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://unpkg.com/vue@next" defer></script>
+		<script src="app.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1>Vue Events</h1>
+		</header>
+		<section id="events">
+			<h2>Events in Action</h2>
+			<!-- v-on is what makes an event listener on something. You put v-on:whatyouwant, such as mouseevent or click. Then the method (function) is called that does what we want it to do. You can write add() or just add, and it will detect the function in either case.-->
+			<button v-on:click="add(10)">Add</button>
+			<button v-on:click="reduce(5)">Reduce</button>
+			<!-- Preserve initial state of the counter with v-once-->
+			<p v-once>Starting Counter: {{ counter }}</p>
+			<p>Result: {{ counter }}</p>
+			<!-- set up an event listener that grabs the input. You can just do setName to grab the user input. If you want to grab the first input and have something automatically after it, such as my last name here, vue allows us to use the reserved "$event" which is the e in the function.  
+			
+			v-on:keyup.enter fixes the problem of the name filling in on every keystroke, and only updates the name when you press enter.-->
+			<input
+				type="text"
+				v-on:input="setName($event, 'Chrzanowska')"
+				v-on:keyup.enter="confirmInput"
+			/>
+			<p>Your Name: {{ confirmedName }}</p>
+
+			<!-- two ways of form handling - you can v-on:submit:"submitForm" on the form, however this way refreshes the page so all data will be lost. In the submitForm we can always call the e.preventDefault();. 
+			
+			Vue has an easier way of handling this. There are event modifiers that can be added to the event, such as the one shown below that take care of the page refresh. Some other modefiers are button click types and keystrokes. -->
+			<form v-on:submit.prevent="submitForm">
+				<input type="text" />
+				<button>Sign Up</button>
+			</form>
+		</section>
+	</body>
+</html>

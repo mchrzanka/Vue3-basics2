@@ -18,9 +18,20 @@
 		</header>
 		<section id="events">
 			<h2>Events in Action</h2>
-			<!-- v-on is what makes an event listener on something. You put v-on:whatyouwant, such as mouseevent or click. Then the method (function) is called that does what we want it to do. You can write add() or just add, and it will detect the function in either case.-->
-			<button v-on:click="add(10)">Add</button>
-			<button v-on:click="reduce(5)">Reduce</button>
+			<!-- v-on is what makes an event listener on something. You put v-on:whatyouwant, such as mouseevent or click. Then the method (function) is called that does what we want it to do. You can write add() or just add, and it will detect the function in either case.
+			
+			Vue has a shortcut for v-on, instead of v-on:click="add(10)" it is @click="add(10)"
+		
+		Vue also has a shortcut for v-bind, it is just a colon, ":value="valuehere"" -->
+			<button
+				v-on:click="add(10)"
+				v-bind:value="this is just an example of bind"
+			>
+				Add
+			</button>
+			<button @click="reduce(5)" :value="this is just an example of bind">
+				Reduce
+			</button>
 			<!-- Preserve initial state of the counter with v-once-->
 			<p v-once>Starting Counter: {{ counter }}</p>
 			<p>Result: {{ counter }}</p>

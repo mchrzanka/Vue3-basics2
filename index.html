@@ -27,22 +27,26 @@
 			<!-- set up an event listener that grabs the input. You can just do setName to grab the user input. If you want to grab the first input and have something automatically after it, such as my last name here, vue allows us to use the reserved "$event" which is the e in the function.  
 			
 			v-on:keyup.enter fixes the problem of the name filling in on every keystroke, and only updates the name when you press enter.-->
-			<input
+			<!-- <input
 				type="text"
 				v-bind:value="confirmedName"
 				v-on:input="setName($event, 'Chrzanowska')"
 				v-on:keyup.enter="confirmInput"
-			/>
+			/> -->
 
 			<!-- 
-			It's common to set the value of an input so you can, for example reset it or edit from a db etc. Instead of using all of the above vue code, you can just use v-model. I'ts managed by vue so that it's updated and sent back, so it's a shortcut for using v-bind:value and v-on:input. This concept is called 2way binding, because we're listening to the input and at the same time writing back to the input what the value is. -->
+			It's common to set the value of an input so you can, for example reset it or edit from a db etc. Instead of using all of the above vue code, you can just use v-model. It's managed by vue so that it's updated and sent back, so it's a shortcut for using v-bind:value and v-on:input. This concept is called 2way binding, because we're listening to the input and at the same time writing back to the input what the value is. -->
 
 			<input
 				type="text"
 				v-model="confirmedName"
 				v-on:keyup.enter="confirmInput"
 			/>
-			<p>Your Name: {{ confirmedName }}</p>
+
+			<input type="text" v-model="lastName" />
+
+			<!-- this is using computed -->
+			<p>Your Name: {{ fullname }}</p>
 			<button v-on:click="resetInput">Reset Input</button>
 
 			<!-- two ways of form handling - you can v-on:submit:"submitForm" on the form, however this way refreshes the page so all data will be lost. In the submitForm we can always call the e.preventDefault();. 
